@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cphg-millerlab-shinyheatmap-deployment
+  namespace: millerlab
+  labels:
+    app: cphg-millerlab-shinyheatmap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cphg-millerlab-shinyheatmap
+  template:
+    metadata:
+      labels:
+        app: cphg-millerlab-shinyheatmap
+    spec:
+      volumes:
+      - name: cphg-millerlab-shinyheatmap-nfs-volume
+        persistentVolumeClaim:
+          claimName: cphg-millerlab-shinyheatmap-nfs-pvc # name of pvc
+      containers:
+      - name: cphg-millerlab-shinyheatmap-container
+        image: quay.io/wfma888/shinyheatmap:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: cphg-millerlab-shinyheatmap-nfs-volume
+          mountPath: /srv/shiny-server/data # mount inside of container
+#        env:
+#        - name:
+#          value: ""
+        resources:
+          requests:
+            memory: "2500Mi"
+            cpu: "0.5"
+          limits:
+            memory: "3000Mi"
+            cpu: "1"
+            

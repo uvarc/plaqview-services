@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cphg-millerlab-plaqviewatac-service
+  namespace: millerlab
+spec:
+  selector:
+    app: cphg-millerlab-plaqviewatac
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80

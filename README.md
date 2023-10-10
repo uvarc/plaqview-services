@@ -1,2 +1,2 @@
 # plaqview-services
-Playqview Kubernetes Services
+Millerlab Kubernetes Services
