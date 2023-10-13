@@ -22,7 +22,6 @@ spec:
       containers:
       - name: cphg-millerlab-plaqview-v2-container
         image: quay.io/wfma888/plaqview:{{ .Values.version.plaqviewv2 }}
-        imagePullPolicy: IfNotPresent        
         ports:
         - containerPort: 80
         volumeMounts:
@@ -38,3 +37,4 @@ spec:
           limits:
             memory: "12000Mi"
             cpu: "1"
+            
