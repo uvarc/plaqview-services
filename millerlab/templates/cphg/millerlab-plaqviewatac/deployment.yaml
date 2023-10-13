@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cphg-millerlab-plaqviewatac-deployment
+  namespace: millerlab
+  labels:
+    app: cphg-millerlab-plaqviewatac
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cphg-millerlab-plaqviewatac
+  template:
+    metadata:
+      labels:
+        app: cphg-millerlab-plaqviewatac
+    spec:
+      volumes:
+      - name: cphg-millerlab-plaqviewatac-nfs-volume
+        persistentVolumeClaim:
+          claimName: cphg-millerlab-plaqviewatac-nfs-pvc # name of pvc
+      containers:
+      - name: cphg-millerlab-plaqviewatac-container
+        image: quay.io/wfma888/plaqviewatac:stable
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: cphg-millerlab-plaqviewatac-nfs-volume
+          mountPath: /srv/shiny-server/data # mount inside of container
+#        env:
+#        - name:
+#          value: ""
+        resources:
+          requests:
+            memory: "15000Mi"
+            cpu: "1"
+          limits:
+            memory: "16000Mi"
+            cpu: "2"
+            

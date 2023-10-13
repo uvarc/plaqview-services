@@ -1,0 +1,35 @@
+# apiVersion: networking.k8s.io/v1beta1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+#     nginx.org/websocket-services: "cphg-millerlab-plaqviewatac-service"
+#     acme.cert-manager.io/http01-edit-in-place: "true"
+#     nginx.org/proxy-connect-timeout: "600s"
+#     nginx.org/proxy-read-timeout: "600s"
+#     nginx.org/proxy-send-timeout: "600s"
+#     cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+#   name: cphg-millerlab-plaqviewatac-tls-nginx-ingress
+#   namespace: millerlab
+# spec:
+#   rules:
+#     - host: plaqviewatac.pods.uvarc.io
+#       http:
+#         paths:
+#           - backend:
+#               serviceName: cphg-millerlab-plaqviewatac-service
+#               servicePort: 8080
+#             path: /
+#     - host: plaqviewatac.uvadcos.io
+#       http:
+#         paths:
+#           - backend:
+#               serviceName: cphg-millerlab-plaqviewatac-service
+#               servicePort: 8080
+#             path: /
+#     #This section is only required if TLS is to be enabled for the Ingress
+#   tls:
+#       - hosts:
+#           - plaqviewatac.pods.uvarc.io
+#         secretName: cphg-millerlab-plaqviewatac-nginx-tls-ingress-secret
