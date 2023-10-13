@@ -1,41 +1,41 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: cphg-millerlab-plaqview-v2-deployment
-  namespace: millerlab
-  labels:
-    app: cphg-millerlab-plaqview-v2
-spec:
-  replicas: 6
-  selector:
-    matchLabels:
-      app: cphg-millerlab-plaqview-v2
-  template:
-    metadata:
-      labels:
-        app: cphg-millerlab-plaqview-v2
-    spec:
-      volumes:
-      - name: cphg-millerlab-plaqview-v2-nfs-volume
-        persistentVolumeClaim:
-          claimName: cphg-millerlab-plaqview-v2-nfs-pvc # name of pvc
-      containers:
-      - name: cphg-millerlab-plaqview-v2-container
-        image: quay.io/wfma888/plaqview:{{ .Values.version.plaqviewv2 }}
-        imagePullPolicy: IfNotPresent        
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: cphg-millerlab-plaqview-v2-nfs-volume
-          mountPath: /srv/shiny-server/data # mount inside of container
-#        env:
-#        - name:
-#          value: ""
-        resources:
-          requests:
-            memory: "10000Mi"
-            cpu: "1"
-          limits:
-            memory: "12000Mi"
-            cpu: "1"
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: cphg-millerlab-plaqview-v2-deployment
+#   namespace: millerlab
+#   labels:
+#     app: cphg-millerlab-plaqview-v2
+# spec:
+#   replicas: 6
+#   selector:
+#     matchLabels:
+#       app: cphg-millerlab-plaqview-v2
+#   template:
+#     metadata:
+#       labels:
+#         app: cphg-millerlab-plaqview-v2
+#     spec:
+#       volumes:
+#       - name: cphg-millerlab-plaqview-v2-nfs-volume
+#         persistentVolumeClaim:
+#           claimName: cphg-millerlab-plaqview-v2-nfs-pvc # name of pvc
+#       containers:
+#       - name: cphg-millerlab-plaqview-v2-container
+#         image: quay.io/wfma888/plaqview:{{ .Values.version.plaqviewv2 }}
+#         imagePullPolicy: IfNotPresent        
+#         ports:
+#         - containerPort: 80
+#         volumeMounts:
+#         - name: cphg-millerlab-plaqview-v2-nfs-volume
+#           mountPath: /srv/shiny-server/data # mount inside of container
+# #        env:
+# #        - name:
+# #          value: ""
+#         resources:
+#           requests:
+#             memory: "10000Mi"
+#             cpu: "1"
+#           limits:
+#             memory: "12000Mi"
+#             cpu: "1"
             
