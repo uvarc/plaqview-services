@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cphg-millerlab-plaqview-v2-nfs-pvc
+  name: cphg-millerlab-plaqviewdevatac-dev-nfs-pvc
   namespace: millerlab
 spec:
-  storageClassName: cphg-millerlab-plaqview-v2-sc
+  storageClassName: cphg-millerlab-plaqviewdevatac-dev-sc
   accessModes:
     - ReadOnlyMany  #must be the same as PersistentVolume
   resources:

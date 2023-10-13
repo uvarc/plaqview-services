@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cphg-millerlab-plaqview-v2-service
+  name: cphg-millerlab-plaqviewdevatac-dev-service
   namespace: millerlab
 spec:
   selector:
-    app: cphg-millerlab-plaqview-v2
+    app: cphg-millerlab-plaqviewdevatac-dev
   ports:
     - protocol: TCP
       port: 8080
