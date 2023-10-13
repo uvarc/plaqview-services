@@ -1,0 +1,17 @@
+# apiVersion: networking.k8s.io/v1beta1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+#     nginx.org/websocket-services: "cphg-millerlab-shinyheatmap-service"
+#   name: cphg-millerlab-shinyheatmap-nginx-ingress
+#   namespace: millerlab
+# spec:
+#   rules:
+#     - host: shinyheatmap.pods.uvarc.io
+#       http:
+#         paths:
+#           - backend:
+#               serviceName: cphg-millerlab-shinyheatmap-service
+#               servicePort: 8080
+#             path: /

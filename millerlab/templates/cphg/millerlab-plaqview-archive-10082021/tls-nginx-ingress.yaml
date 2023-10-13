@@ -1,0 +1,40 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+#     nginx.org/websocket-services: "cphg-millerlab-plaqview-archive-10082021-service"
+#     acme.cert-manager.io/http01-edit-in-place: "true"
+#     nginx.org/proxy-connect-timeout: "600s"
+#     nginx.org/proxy-read-timeout: "600s"
+#     nginx.org/proxy-send-timeout: "600s"
+#     cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer  
+#   name: cphg-millerlab-plaqview-archive-10082021-tls-nginx-ingress
+#   namespace: millerlab
+# spec:
+#   rules:
+#   - host: plaqview11082021.pods.uvarc.io
+#     http:
+#       paths:
+#       - pathType: Prefix
+#         path: "/"
+#         backend:
+#           service:
+#             name: cphg-millerlab-plaqview-archive-10082021-service
+#             port:
+#               number: 8080
+#   - host: plaqview11082021.uvadcos.io
+#     http:
+#       paths:
+#       - pathType: Prefix
+#         path: "/"
+#         backend:
+#           service:
+#             name: cphg-millerlab-plaqview-archive-10082021-service
+#             port:
+#               number: 8080
+#   tls:
+#       - hosts:
+#           - plaqview11082021.pods.uvarc.io
+#         secretName: cphg-millerlab-plaqview-archive-10082021-nginx-tls-ingress-secret   
