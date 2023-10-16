@@ -9,12 +9,12 @@
 #     nginx.org/proxy-connect-timeout: "600s"
 #     nginx.org/proxy-read-timeout: "600s"
 #     nginx.org/proxy-send-timeout: "600s"
-#     cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
+#     cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer  
 #   name: cphg-millerlab-shinyheatmap-tls-nginx-ingress
 #   namespace: millerlab
 # spec:
 #   rules:
-#     - host: shinyheatmap.pods.uvarc.io
+#     - host: plaq-shinyheatmap.pods.uvarc.io
 #       http:
 #         paths:
 #         - pathType: Prefix
@@ -24,7 +24,7 @@
 #               name: cphg-millerlab-shinyheatmap-service
 #               port: 
 #                 number: 8080
-#     - host: shinyheatmap.uvadcos.io
+#     - host: plaq-shinyheatmap.uvadcos.io
 #       http:
 #         paths:
 #         - pathType: Prefix
@@ -37,5 +37,5 @@
 # #     #This section is only required if TLS is to be enabled for the Ingress
 #   tls:
 #       - hosts:
-#           - shinyheatmap.pods.uvarc.io
+#           - plaq-shinyheatmap.pods.uvarc.io
 #         secretName: cphg-millerlab-shinyheatmap-nginx-tls-ingress-secret
