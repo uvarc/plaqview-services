@@ -32,9 +32,9 @@ spec:
 #          value: ""
         resources:
           requests:
-            memory: "10000Mi"
+            memory: "25000Mi"
             cpu: "1"
           limits:
-            memory: "12000Mi"
+            memory: "28000Mi"
             cpu: "1"
             
