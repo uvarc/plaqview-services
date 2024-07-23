@@ -22,6 +22,7 @@ spec:
       containers:
       - name: cphg-millerlab-plaqview-v2-container
         image: quay.io/wfma888/plaqview:stable
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
